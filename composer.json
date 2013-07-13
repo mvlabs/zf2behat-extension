@@ -1,0 +1,22 @@
+{
+    "name": "mauipipe/zf2-extension",
+    "description": "\"Zend Framework 2 extension for Behat\"",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "David Contavalli",
+            "email": "mauipipe@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+	"php":">=5.3.3",
+	"behat/behat":"=2.4@stable"
+    },
+
+   "autoload": {
+	"psr-0":{
+		"Behat\\Zf2Extension":"src/"
+	}
+   }
+}
