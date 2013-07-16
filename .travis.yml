@@ -2,10 +2,6 @@ language: php
 
 php: [5.3, 5.4, 5.5]
 
-env:
-  - ZEND_FRAMEWORK_VERSION='2.1.9'
-  - ZEND_FRAMEWORK_VERSION='2.2.0'
-  
 
 branches:
   only:
@@ -13,7 +9,6 @@ branches:
 
 before_script:
   - composer self-update
-  - composer require --no-update zendframework/zendframework=$ZEND_FRAMEWORK_VERSION
-  - composer install --dev --prefer-source 
+  - composer install --dev --prefer-source --progress
   
 script: 'vendor/bin/behat -c testapp/behat.yml'
