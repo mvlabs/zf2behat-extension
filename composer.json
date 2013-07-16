@@ -1,5 +1,5 @@
 {
-    "name": "mauipipe/zf2-extension",
+    "name": "mvlabs\MV-Zf2BehatExt",
     "description": "\"Zend Framework 2 extension for Behat\"",
     "license": "MIT",
     "authors": [
