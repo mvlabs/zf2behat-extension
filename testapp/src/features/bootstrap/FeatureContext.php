@@ -1,7 +1,5 @@
 <?php
 
-namespace testapp\src\features\bootstrap;
-
 use Behat\Behat\Context\ClosuredContextInterface,
     Behat\Behat\Context\TranslatedContextInterface,
     Behat\Behat\Context\BehatContext,
@@ -44,9 +42,11 @@ class FeatureContext extends BehatContext implements Zf2AwareContextInterface
      */
     public function zendMvcApplicationIsInitialized()
     {
-
-        assertTrue($this->zf2Application instanceof Application);
-
+        if( !($this->zf2Application instanceof Application) ) {
+            
+            throw new \Exception("property zf2Application is not an instance of Zend\Mvc\Application");
+        }
+       
     }
 
     /**
@@ -55,7 +55,11 @@ class FeatureContext extends BehatContext implements Zf2AwareContextInterface
     public function methodGetservicemanagerIsInvoked()
     {
 
-        assertTrue( method_exists( $this->zf2Application, "getServiceManager" ) );
+        if( !method_exists( $this->zf2Application, "getServiceManager" ) ) {
+            
+            throw new \Exception("method getServiceManager does not exist in zf2Application propert");
+            
+        }
         $this->serviceManager = $this->zf2Application->getServiceManager();
 
     }
@@ -66,12 +70,17 @@ class FeatureContext extends BehatContext implements Zf2AwareContextInterface
     public function iHaveAnInstanceOfServicemanager()
     {
 
-       assertTrue( $this->serviceManager instanceof ServiceManager );
+       if( !($this->serviceManager instanceof ServiceManager) ) {
+           
+           throw new \Exception("property serviceManager is not an instance of Zend\ServiceManager\ServiceManager");
+           
+       }
 
     }
 
     public function setZf2App( \Zend\Mvc\Application $zf2Application )
     {
+        
         $this->zf2Application = $zf2Application;
 
     }
