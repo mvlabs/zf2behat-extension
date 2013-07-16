@@ -1,4 +1,4 @@
-mvlavs/zf2behat-extension
+mvlabs/zf2behat-extension
 ==============
 
 Behat extension for Zend Framework 2 load Zend\Mvc\Application implementing Zf2AwareContextInterface in your context
