@@ -16,7 +16,7 @@ Installation
 Add in your composer.json
 ```
 "require": {
-     "mvlabs/zf2behat-extension" : "1.0.0",
+     "mvlabs/zf2behat-extension" : "0.5",
 }
 
 ```
