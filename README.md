@@ -5,36 +5,36 @@ Behat extension for Zend Framework 2 load Zend\Mvc\Application implementing Zf2A
 
 Requirements
 =============
-"""
+```
  "require": {
 	"php":">=5.3.3",
 	"behat/behat":"=2.4@stable",
     }
-"""
+```
 Installation
 ==============
 Add in your composer.json
-"""
+```
 "require": {
      "mvlabs/zf2behat-extension" : "1.0.0",
 }
 
-"""
+```
 
 Usage example
 =============
 
 Add the extension in behat.yml file and set under zf2_config_path the location of the file application.config.php
 
-"""
+```
     Behat\Zf2Extension\Zf2Extension:
       zf2_config_path: "config/application.config.php"
 
-"""
+```
 
 Implements in every context file Behat\Zf2Extension\Context\Zf2AwareContextInterface and pass the value of $zf2Application too a property
 
-"""
+```
 <?php
 
 namespace testapp\src\features\bootstrap;
@@ -82,6 +82,6 @@ class FeatureContext extends BehatContext implements Zf2AwareContextInterface
     }
 }
 
-"""
+```
 
 
