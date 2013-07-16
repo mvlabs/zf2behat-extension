@@ -1,10 +1,8 @@
 default:
   extensions:
-    Behat\MinkExtension\Extension:
-      goutte:   ~
     Behat\Zf2Extension\Zf2Extension:
       zf2_config_path: "zf2mini/config/application.config.php"
-      mink_driver: true
+      
   paths:
     features:  src/features
     bootstrap: %behat.paths.features%/bootstrap
