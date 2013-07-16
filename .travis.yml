@@ -13,3 +13,7 @@ branches:
 
 before_script:
   - composer self-update
+  - composer require --no-update zendframework/zendframework=$ZEND_FRAMEWORK_VERSION
+  - composer install --dev --prefer-source 
+  
+script: 'vendor/bin/behat -c testapp/behat.yml'
