@@ -9,6 +9,6 @@ branches:
 
 before_script:
   - composer self-update
-  - composer install --dev --prefer-source --no-progress
+  - composer install --dev --prefer-source --no-progress -n
   
 script: 'vendor/bin/behat -c testapp/behat.yml'
