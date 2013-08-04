@@ -13,6 +13,9 @@
            <argument>%behat.zf2_extension.zf2_config_path%</argument>
            <tag name="behat.context.initializer" />
         </service>
-
+        
+        <service id="zf2.context.class_guesser" class="Behat\Zf2Extension\Context\Zf2ApplicationContext">
+            <tag name="behat.context.class_guesser" priority="-1">
+        </service>
     </services>
 </container>
