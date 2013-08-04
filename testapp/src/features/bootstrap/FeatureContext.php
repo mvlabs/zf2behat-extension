@@ -18,23 +18,29 @@ use Behat\Zf2Extension\Context\Zf2AwareContextInterface;
 use Zend\Mvc\Application,
     Zend\ServiceManager\ServiceManager;
 
+
+
 /**
  * Features context.
  */
 class FeatureContext extends BehatContext implements Zf2AwareContextInterface
 {
 
+    use Behat\Zf2Extension\Context\Zf2Dictionary;
+    
     private $zf2Application;
     private $serviceManager;
+    private $parameters;
     /**
      * Initializes context.
      * Every scenario gets it's own context object.
      *
      * @param array $parameters context parameters (set them up through behat.yml)
      */
-    public function __construct(array $parameters)
-    {
+    public function __construct(array $parameters){
 
+        $this->parameters = $parameters;
+        $this->useContext('traits', new Zf2DictionaryContext());
     }
 
     /**
@@ -42,11 +48,9 @@ class FeatureContext extends BehatContext implements Zf2AwareContextInterface
      */
     public function zendMvcApplicationIsInitialized()
     {
-        if( !($this->zf2Application instanceof Application) ) {
-            
-            throw new \Exception("property zf2Application is not an instance of Zend\Mvc\Application");
-        }
        
+        assertInstanceOf("Zend\Mvc\Application",$this->zf2Application);
+        
     }
 
     /**
@@ -54,34 +58,27 @@ class FeatureContext extends BehatContext implements Zf2AwareContextInterface
      */
     public function methodGetservicemanagerIsInvoked()
     {
-
-        if( !method_exists( $this->zf2Application, "getServiceManager" ) ) {
-            
-            throw new \Exception("method getServiceManager does not exist in zf2Application propert");
-            
-        }
+               
+        assertTrue(method_exists( $this->zf2Application, "getServiceManager" )); 
         $this->serviceManager = $this->zf2Application->getServiceManager();
 
     }
 
     /**
-     * @Then /^I have an instance of ServiceManager$/
+     * @Then /^I should have a ServiceManager instance$/
      */
-    public function iHaveAnInstanceOfServicemanager()
-    {
-
-       if( !($this->serviceManager instanceof ServiceManager) ) {
-           
-           throw new \Exception("property serviceManager is not an instance of Zend\ServiceManager\ServiceManager");
-           
-       }
-
-    }
-
-    public function setZf2App( \Zend\Mvc\Application $zf2Application )
+    public function iShouldHaveAServicemanagerInstance()
     {
         
-        $this->zf2Application = $zf2Application;
-
+        assertInstanceOf("Zend\ServiceManager\ServiceManager",$this->serviceManager);
+        
     }
+    
+            
+    public function setZf2App(Application $zf2Application) {
+        
+        $this->zf2Application = $zf2Application;
+        
+    }
+   
 }

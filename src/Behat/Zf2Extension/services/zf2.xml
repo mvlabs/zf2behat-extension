@@ -14,8 +14,8 @@
            <tag name="behat.context.initializer" />
         </service>
         
-        <service id="zf2.context.class_guesser" class="Behat\Zf2Extension\Context\Zf2ApplicationContext">
-            <tag name="behat.context.class_guesser" priority="-1">
+        <service id="zf2.context.class_guesser" class="Behat\Zf2Extension\Context\ClassGuesser\Zf2ClassGuesser">
+            <tag name="behat.context.class_guesser" priority="5" />
         </service>
     </services>
 </container>

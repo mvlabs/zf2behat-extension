@@ -12,7 +12,7 @@ use Behat\Behat\Context\ClassGuesser\ClassGuesserInterface;
  *  Any other use shall be considered forbidden, unless otherwise specified.
  * @link http://www.mvassociates.it
  */
-class zf2ClassGuesser implements ClassGuesserInterface{
+class Zf2ClassGuesser implements ClassGuesserInterface{
    
     public function guess() {
     

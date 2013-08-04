@@ -2,6 +2,7 @@
 namespace Behat\Zf2Extension\Context;
 
 use Behat\Behat\Context\BehatContext;
+use Behat\MinkExtension\Context\MinkContext;
 use Zend\ServiceManager\Exception\InvalidServiceNameException;
 use Behat\Zf2Extension\Context\Zf2AwareContextInterface;
 
@@ -15,7 +16,7 @@ use Behat\Zf2Extension\Context\Zf2AwareContextInterface;
  *  Any other use shall be considered forbidden, unless otherwise specified.
  * @link http://www.mvassociates.it
  */
-class Zf2ApplicationContext extends BehatContext implements Zf2AwareContextInterface{
+class Zf2ApplicationContext extends MinkContext implements Zf2AwareContextInterface{
    
    private $zf2Application;
    
@@ -31,7 +32,7 @@ class Zf2ApplicationContext extends BehatContext implements Zf2AwareContextInter
        
    }
    
-   public function getService($serviceName) {
+   public function getServiceByAlias($serviceName) {
        
        $serviceManager = $this->getServiceManager();
              
@@ -53,6 +54,8 @@ class Zf2ApplicationContext extends BehatContext implements Zf2AwareContextInter
        return $this->zf2Application->getServiceManager();
        
    }
+
+    
    
 }
 

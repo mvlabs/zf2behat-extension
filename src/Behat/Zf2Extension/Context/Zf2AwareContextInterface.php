@@ -10,5 +10,6 @@ use Zend\Mvc\Application;
 interface Zf2AwareContextInterface
 {
     public function setZf2App(Application $zf2Application);
-
+    
+   
 }
