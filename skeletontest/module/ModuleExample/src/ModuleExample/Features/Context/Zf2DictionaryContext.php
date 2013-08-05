@@ -1,4 +1,5 @@
 <?php
+namespace Behat\ModuleDemo\Features\Context;
 
 use Behat\Behat\Context\BehatContext;
 use Behat\Behat\Exception\PendingException;

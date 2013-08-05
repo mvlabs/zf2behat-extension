@@ -14,9 +14,26 @@ use Behat\Behat\Context\ClassGuesser\ClassGuesserInterface;
  */
 class Zf2ClassGuesser implements ClassGuesserInterface{
    
+    
+    private $classSuffix;
+    private $namespace;
+    
+    public function __construct($classSuffix = 'Features\\Context\\FeatureContext') {
+        
+        $this->classSuffix = $classSuffix;
+        
+    }
+    
+    public function setModuleNamespace($namespace){
+        
+        $this->namespace = $namespace;
+        
+    }
+    
     public function guess() {
     
-        return "Behat\Zf2Extension\Context\Zf2ApplicationContext";
+      
+        return $this->classSuffix ;
         
     }   
     

@@ -1,4 +1,6 @@
 <?php
+namespace Behat\ModuleDemo\Features\Context;
+
 
 use Behat\Behat\Context\ClosuredContextInterface,
     Behat\Behat\Context\TranslatedContextInterface,
@@ -18,13 +20,10 @@ use Behat\Zf2Extension\Context\Zf2AwareContextInterface;
 use Zend\Mvc\Application,
     Zend\ServiceManager\ServiceManager;
 
-
-
 /**
  * Features context.
  */
-class FeatureContext extends BehatContext implements Zf2AwareContextInterface
-{
+class FeatureContext extends BehatContext implements Zf2AwareContextInterface {
 
     use Behat\Zf2Extension\Context\Zf2Dictionary;
     
