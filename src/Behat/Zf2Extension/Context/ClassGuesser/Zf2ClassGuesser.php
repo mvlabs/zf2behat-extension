@@ -18,7 +18,7 @@ class Zf2ClassGuesser implements ClassGuesserInterface{
     private $classSuffix;
     private $namespace;
     
-    public function __construct($classSuffix = 'Features\\Context\\FeatureContext') {
+    public function __construct($classSuffix = '\\ModuleExample\\Features\\Context\\FeatureContext') {
         
         $this->classSuffix = $classSuffix;
         

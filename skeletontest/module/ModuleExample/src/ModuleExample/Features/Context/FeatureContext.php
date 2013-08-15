@@ -1,5 +1,5 @@
 <?php
-namespace Behat\ModuleDemo\Features\Context;
+namespace ModuleExample\Features\Context;
 
 
 use Behat\Behat\Context\ClosuredContextInterface,
@@ -25,7 +25,7 @@ use Zend\Mvc\Application,
  */
 class FeatureContext extends BehatContext implements Zf2AwareContextInterface {
 
-    use Behat\Zf2Extension\Context\Zf2Dictionary;
+    use \Behat\Zf2Extension\Context\Zf2Dictionary;
     
     private $zf2Application;
     private $serviceManager;

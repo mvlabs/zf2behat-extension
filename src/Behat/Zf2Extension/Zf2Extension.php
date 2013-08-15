@@ -29,7 +29,11 @@ class Zf2Extension extends Extension
               $configuration = $configurationPath.DIRECTORY_SEPARATOR."test.".$configFile;
                        
          }
-                  
+         
+          $container->setParameter(
+                'behat.paths.features',
+                $applicationPath.DIRECTORY_SEPARATOR."module/ModuleExample/src".DIRECTORY_SEPARATOR.$container->getParameter('behat.zf2_extension.context.path_suffix')
+            );
          
          $container->setParameter('behat.zf2_extension.zf2_config_path',$configuration);
          
