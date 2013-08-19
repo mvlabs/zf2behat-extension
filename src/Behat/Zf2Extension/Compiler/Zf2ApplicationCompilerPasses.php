@@ -9,14 +9,20 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface,
 class Zf2ApplicationCompilerPasses  implements CompilerPassInterface{
   
     public function process(ContainerBuilder $container) {
-       
+         
         
-       var_dump($container->hasParameter('behat.zf2_application.')); 
-        
-       $basePath = $container->getParameter("behat.paths.base");
-             
-       var_dump($basePath);      
-        
+      $applicationPath = $container->getParameter('behat.paths.base');
+      $configurationPath = $container->getParameter("behat.zf2_extension.application_config_path");
+      $fullApplicationConfigPath = $applicationPath.DIRECTORY_SEPARATOR.$configurationPath;
+                                            
+      if(file_exists($fullApplicationConfigPath)){
+         
+           $configuration = require $fullApplicationConfigPath;
+           
+      }
+            
+      $container->setParameter('behat.zf2_extension.application_config_path',$configuration);
+                  
     }    
     
 }

@@ -5,6 +5,8 @@ use Behat\Behat\Context\Initializer\InitializerInterface,
     Behat\Behat\Context\ContextInterface;
 
 use Behat\Zf2Extension\Context\Zf2AwareContextInterface;
+
+use Zend\Mvc\Application;
 /**
  * Description of Zf2Initializer
  *
@@ -15,9 +17,9 @@ class Zf2AwareInizializer implements InitializerInterface
 {
     private $zf2App;
 
-    public function __construct( $configFile )
+    public function __construct( Application $zf2App )
     {
-       $this->zf2App = \Zend\Mvc\Application::init(require $configFile);
+        $this->zf2App = $zf2App;
 
     }
 

@@ -3,6 +3,9 @@
 namespace Behat\Zf2Extension;
 
 use Behat\Behat\Extension\Extension;
+
+use Behat\Zf2Extension\Compiler\Zf2ApplicationCompilerPasses;
+
 use Symfony\Component\DependencyInjection\ContainerBuilder,
     Symfony\Component\DependencyInjection\Loader\XmlFileLoader,
     Symfony\Component\Config\FileLocator;
@@ -10,7 +13,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder,
 /**
  * Description of Zf2Extensions
  *
- * @author mauilap
+ * @author David Contavalli <mauipipe@gmail.com>
  */
 class Zf2Extension extends Extension
 {
@@ -18,55 +21,22 @@ class Zf2Extension extends Extension
     {
          $loader = new XmlFileLoader( $container, new FileLocator(__DIR__.'/services'));
          $loader->load('zf2.xml');
-
-         $applicationPath = $container->getParameter('behat.paths.base');
-         $configPath = $container->getParameter('behat.zf2_extension.config.path');
-         $configFile = $container->getParameter('behat.zf2_extension.config.file');
-         $configurationPath = $applicationPath.DIRECTORY_SEPARATOR.$configPath;
-                          
-         if(!file_exists($configuration = $configurationPath.DIRECTORY_SEPARATOR.$configFile)){
-           
-              $configuration = $configurationPath.DIRECTORY_SEPARATOR."test.".$configFile;
-                       
-         }
-         
-          $container->setParameter(
-                'behat.paths.features',
-                $applicationPath.DIRECTORY_SEPARATOR."module/ModuleExample/src".DIRECTORY_SEPARATOR.$container->getParameter('behat.zf2_extension.context.path_suffix')
-            );
-         
-         $container->setParameter('behat.zf2_extension.zf2_config_path',$configuration);
-         
-         
-        /* if (!isset($config['zf2_config_path'])) {
-
-             throw new \Exception('You need to set a path for zf2_config_path');
-
-         }
-        
-         $zf2ConfigFile = $configPath.DIRECTORY_SEPARATOR.$config['zf2_config_path'];
-
-         if (!file_exists($zf2ConfigFile)) {
-
-             throw new \Exception("File ".$zf2ConfigFile." does not exist");
-
-         }
-                  
+       
          if(isset($config['module'])) {
              
              $container->setParameter('behat.zf2_extension.module', $config['module']);
              
          }
          
-         $container->setParameter('behat.zf2_extension.zf2_config_path',  $zf2ConfigFile );*/
+                 
     }
-    
-    
+       
     public function getCompilerPasses() {
        
         return array(
             
-            new Compiler\Zf2ApplicationCompilerPasses(),
+            new Zf2ApplicationCompilerPasses()
+            
         );
         
     }

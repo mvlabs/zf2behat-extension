@@ -5,23 +5,32 @@
       <parameters>
         <parameter key="behat.zf2_extension.module">null</parameter>
         <parameter key="behat.zf2_extension.config.path">config/</parameter>
-        <parameter key="behat.zf2_extension.config.file">application.config.php</parameter>
+        
+        <parameter key="behat.zf2_extension.application_config_path">config/test.application.config.php</parameter>
+        
+        <parameter key="behat.zf2_extension.application.class">Zend\Mvc\Application</parameter>
         
         <parameter key="behat.zf2_extension.context.initializer.class">Behat\Zf2Extension\Context\Initializer\Zf2AwareInizializer</parameter>
         <parameter key="behat.zf2_extension.context.class_suffix">ModuleExample\Features\Context\FeatureContext</parameter>
         <parameter key="behat.zf2_extension.context.path_suffix">ModuleExample/Features</parameter>
+        
+        <parameter key="behat.zf2_extension.class_guesser.class">Behat\Zf2Extension\Context\ClassGuesser\Zf2ClassGuesser</parameter>
+
      </parameters>
 
     <services>
-             
+        <service id="behat_zf2_extension.application" class="%behat.zf2_extension.application.class%" factory-class="%behat.zf2_extension.application.class%" factory-method="init">
+            <argument>%behat.zf2_extension.application_config_path%</argument>
+        </service>
+                     
         <service id="behat.zf2_extension.context.initializer" class="%behat.zf2_extension.context.initializer.class%">
-           <argument>%behat.zf2_extension.zf2_config_path%</argument>
+           <argument type="service" id="behat_zf2_extension.application" />
            <tag name="behat.context.initializer" />
         </service>
         
-        <service id="zf2.context.class_guesser" class="Behat\Zf2Extension\Context\ClassGuesser\Zf2ClassGuesser">
+       <!-- <service id="zf2.context.class_guesser" class="%behat.zf2_extension.class_guesser.class%">
             <argument>%behat.zf2_extension.context.class_suffix%</argument>
             <tag name="behat.context.class_guesser" priority="5" />
-        </service>
+        </service>-->
     </services>
 </container>
