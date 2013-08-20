@@ -1,9 +1,9 @@
 <?php
-namespace ModuleExample;
+namespace ModuleDemo;
 return array(
 	'controllers'=> array(
 		'invokables'=>array(
-			'ModuleExample\Controller\ModuleExample'=> 'ModuleExample\Controller\ModuleExampleController',
+			'ModuleDemo\Controller\ModuleDemo'=> 'ModuleDemo\Controller\ModuleDemoController',
                                     )
                     ),
                     
@@ -18,7 +18,7 @@ return array(
                                           'id'=>'[0-9]+',
                                       ),
                                     'defaults'=> array(
-                                        'controller'=>'ModuleExample\Controller\ModuleExample',
+                                        'controller'=>'ModuleDemo\Controller\ModuleDemo',
                                         'action'=>'index',
                                     ),
                                    ),
@@ -26,7 +26,7 @@ return array(
                         ),
                     ),
                     
-                     'asset_manager' => array(
+      'asset_manager' => array(
         'resolver_configs' => array(
     
             'paths' => array(

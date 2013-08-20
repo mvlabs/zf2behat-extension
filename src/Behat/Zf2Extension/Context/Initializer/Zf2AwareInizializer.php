@@ -24,25 +24,25 @@ class Zf2AwareInizializer implements InitializerInterface
     }
 
        
-     public function supports(ContextInterface $context)
-     {
-       
+    public function supports(ContextInterface $context)
+    {
+
          if( $context instanceof Zf2AwareContextInterface ) {
-             
+
              return true;
-             
+
         }
-              
-         $refl = new \ReflectionObject($context);
-         if(method_exists($refl, "getTraitNames")) {
-             
-             if(in_array('Behat\\Zf2Extension\\Context\Zf2Dictionary', $refl->getTraitNames())) {
-                
-                 return true;
-                 
-             }
-         }
-      
+
+        $refl = new \ReflectionObject($context);
+        if(method_exists($refl, "getTraitNames")) {
+
+            if(in_array('Behat\\Zf2Extension\\Context\Zf2Dictionary', $refl->getTraitNames())) {
+
+                return true;
+
+            }
+        }
+
     }
 
     public function initialize(ContextInterface $context)

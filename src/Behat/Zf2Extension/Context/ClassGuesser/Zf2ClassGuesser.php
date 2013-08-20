@@ -18,7 +18,7 @@ class Zf2ClassGuesser implements ClassGuesserInterface{
     private $classSuffix;
     private $namespace;
     
-    public function __construct($classSuffix = '\\ModuleExample\\Features\\Context\\FeatureContext') {
+    public function __construct($classSuffix = '\\ModuleDemo\\Features\\Context\\FeatureContext') {
         
         $this->classSuffix = $classSuffix;
         
@@ -32,8 +32,11 @@ class Zf2ClassGuesser implements ClassGuesserInterface{
     
     public function guess() {
     
-      
-        return $this->classSuffix ;
+        if(class_exists($this->namespace.$this->classSuffix)) {
+            
+            return $this->namespace.$this->classSuffix ;
+            
+        }
         
     }   
     

@@ -1,6 +1,6 @@
 <?php
 
-namespace ModuleExample;
+namespace ModuleDemo;
 
 class Module
 {
@@ -28,9 +28,10 @@ class Module
     public function getServiceConfig()
     {
         return array(
+            
             'invokables'=>array(
                 
-              'example.service'=>'ModuleExample\Service\ModuleExampleService'
+              'demo.service'=>'ModuleDemo\Service\ModuleExampleService'
                 
             ),
             

@@ -3,17 +3,17 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
       <parameters>
-        <parameter key="behat.zf2_extension.module">null</parameter>
+        <parameter key="behat.zf2_extension.module">ModuleDemo</parameter>
         <parameter key="behat.zf2_extension.config.path">config/</parameter>
         
         <parameter key="behat.zf2_extension.application_config_path">config/test.application.config.php</parameter>
         
         <parameter key="behat.zf2_extension.application.class">Zend\Mvc\Application</parameter>
         
-        <parameter key="behat.zf2_extension.context.initializer.class">Behat\Zf2Extension\Context\Initializer\Zf2AwareInizializer</parameter>
-        <parameter key="behat.zf2_extension.context.class_suffix">ModuleExample\Features\Context\FeatureContext</parameter>
-        <parameter key="behat.zf2_extension.context.path_suffix">ModuleExample/Features</parameter>
+        <parameter key="behat.zf2_extension.context.class_suffix">Features\Context\FeatureContext</parameter>
+        <parameter key="behat.zf2_extension.context.path_suffix">Features</parameter>
         
+        <parameter key="behat.zf2_extension.context.initializer.class">Behat\Zf2Extension\Context\Initializer\Zf2AwareInizializer</parameter>
         <parameter key="behat.zf2_extension.class_guesser.class">Behat\Zf2Extension\Context\ClassGuesser\Zf2ClassGuesser</parameter>
 
      </parameters>
@@ -28,9 +28,9 @@
            <tag name="behat.context.initializer" />
         </service>
         
-       <!-- <service id="zf2.context.class_guesser" class="%behat.zf2_extension.class_guesser.class%">
+        <service id="zf2.context.class_guesser" class="%behat.zf2_extension.class_guesser.class%">
             <argument>%behat.zf2_extension.context.class_suffix%</argument>
             <tag name="behat.context.class_guesser" priority="5" />
-        </service>-->
+        </service>
     </services>
 </container>
