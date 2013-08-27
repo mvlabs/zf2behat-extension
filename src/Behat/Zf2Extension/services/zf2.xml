@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
       <parameters>
-        <parameter key="behat.zf2_extension.module">ModuleDemo</parameter>
+        <parameter key="behat.zf2_extension.module"></parameter>
         <parameter key="behat.zf2_extension.config.path">config/</parameter>
         
         <parameter key="behat.zf2_extension.application_config_path">config/test.application.config.php</parameter>
@@ -15,7 +15,9 @@
         
         <parameter key="behat.zf2_extension.context.initializer.class">Behat\Zf2Extension\Context\Initializer\Zf2AwareInizializer</parameter>
         <parameter key="behat.zf2_extension.class_guesser.class">Behat\Zf2Extension\Context\ClassGuesser\Zf2ClassGuesser</parameter>
-
+        <parameter key="behat.console.processor.locator.class">Behat\Zf2Extension\Console\Processor\LocatorProcessor</parameter>
+        <parameter key="behat.console.processor.init.class">Behat\Zf2Extension\Console\Processor\InitProcessor</parameter>
+        
      </parameters>
 
     <services>
