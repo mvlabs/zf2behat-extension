@@ -1,5 +1,5 @@
 <?php
-namespace ModuleExample\Features\Context;
+namespace ModuleDemo\Features\Context;
 
 use Behat\Behat\Context\BehatContext;
 use Behat\Behat\Exception\PendingException;
@@ -57,7 +57,7 @@ class Zf2DictionaryContext extends BehatContext{
     public function itShouldBeAnInstanceOfExampleservice()
     {
        
-        assertInstanceOf("ModuleExample\Service\ModuleExampleService",$this->getServiceByAlias($this->serviceName));
+        assertInstanceOf("ModuleDemo\Service\ModuleDemoService",$this->getServiceByAlias($this->serviceName));
         
     }
 

@@ -1,5 +1,5 @@
 <?php
-namespace ModuleExample\Features\Context;
+namespace ModuleDemo\Features\Context;
 
 
 use Behat\Behat\Context\ClosuredContextInterface,

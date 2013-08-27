@@ -1,12 +1,12 @@
 <?php
 
-namespace ModuleExample\Service;
+namespace ModuleDemo\Service;
 
-use ModuleExample\Entity\ExampleEntityWidthDateTime;
+use ModuleDemo\Entity\ExampleEntityWidthDateTime;
 
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 
-class ModuleExampleService
+class ModuleDemoService
 {
    
     public function __construct() {
