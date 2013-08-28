@@ -1,11 +1,7 @@
 default:
   extensions:
     Behat\Zf2Extension\Zf2Extension:
-      module: "ModuleDemo"
-      
-  paths:
-    features:  src/features
-    bootstrap: %behat.paths.features%/bootstrap
+      config_path : "config/test.application.config.php"
     
 interface:
    filters:
