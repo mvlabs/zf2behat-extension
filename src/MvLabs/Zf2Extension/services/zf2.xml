@@ -12,12 +12,12 @@
         <parameter key="behat.zf2_extension.context.class_suffix">Features\Context\FeatureContext</parameter>
         <parameter key="behat.zf2_extension.context.path_suffix">Features</parameter>
         
-        <parameter key="behat.zf2_extension.context.initializer.class">Behat\Zf2Extension\Context\Initializer\Zf2AwareInizializer</parameter>
-        <parameter key="behat.zf2_extension.class_guesser.class">Behat\Zf2Extension\Context\ClassGuesser\Zf2ClassGuesser</parameter>
-        <parameter key="behat.console.processor.locator.class">Behat\Zf2Extension\Console\Processor\LocatorProcessor</parameter>
-        <parameter key="behat.console.processor.init.class">Behat\Zf2Extension\Console\Processor\InitProcessor</parameter>
+        <parameter key="behat.zf2_extension.context.initializer.class">MvLabs\Zf2Extension\Context\Initializer\Zf2AwareInizializer</parameter>
+        <parameter key="behat.zf2_extension.class_guesser.class">MvLabs\Zf2Extension\Context\ClassGuesser\Zf2ClassGuesser</parameter>
+        <parameter key="behat.console.processor.locator.class">MvLabs\Zf2Extension\Console\Processor\LocatorProcessor</parameter>
+        <parameter key="behat.console.processor.init.class">MvLabs\Zf2Extension\Console\Processor\InitProcessor</parameter>
         
-        <parameter key="zf2_extension.moduledetailretriever.class">Behat\Zf2Extension\Zf2Retriever\ModuleDetailRetriever</parameter>
+        <parameter key="zf2_extension.moduledetailretriever.class">MvLabs\Zf2Extension\ModuleRetriever\ModuleDetailRetriever</parameter>
     </parameters>
 
     <services>

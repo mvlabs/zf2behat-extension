@@ -1,5 +1,5 @@
 <?php
-namespace Behat\Zf2Extension\Context;
+namespace MvLabs\Zf2Extension\Context;
 
 use Behat\Behat\Context\BehatContext;
 use Behat\MinkExtension\Context\MinkContext;

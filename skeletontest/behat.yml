@@ -1,6 +1,6 @@
 default:
   extensions:
-    Behat\Zf2Extension\Zf2Extension:
+      MvLabs\Zf2Extension\Zf2Extension:
       config_path : "config/test.application.config.php"
     
 interface:

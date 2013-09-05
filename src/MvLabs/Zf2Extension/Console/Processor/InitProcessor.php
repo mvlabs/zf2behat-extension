@@ -1,5 +1,5 @@
 <?php
-namespace Behat\Zf2Extension\Console\Processor;
+namespace  MvLabs\Zf2Extension\Console\Processor;
 
 use Symfony\Component\DependencyInjection\ContainerInterface,
     Symfony\Component\Console\Command\Command,

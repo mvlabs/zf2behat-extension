@@ -1,6 +1,6 @@
 <?php
 
-namespace Behat\Zf2Extension;
+namespace MvLabs\Zf2Extension;
 
 use Behat\Behat\Extension\Extension;
 

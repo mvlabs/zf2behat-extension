@@ -1,5 +1,5 @@
 <?php
-namespace Behat\Zf2Extension\Compiler;
+namespace MvLabs\Zf2Extension\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface,
     Symfony\Component\DependencyInjection\ContainerBuilder;

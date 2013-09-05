@@ -1,5 +1,5 @@
 <?php
-namespace Behat\Zf2Extension\Context\Initializer;
+namespace MvLabs\Zf2Extension\Context\Initializer;
 
 use Behat\Behat\Context\Initializer\InitializerInterface,
     Behat\Behat\Context\ContextInterface;

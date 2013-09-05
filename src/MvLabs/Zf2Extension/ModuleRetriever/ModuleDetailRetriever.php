@@ -1,5 +1,5 @@
 <?php
-namespace Behat\Zf2Extension\Zf2Retriever;
+namespace MvLabs\Zf2Extension\ModuleRetriever;
 
 use Zend\Mvc\Application;
 /**

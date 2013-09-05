@@ -1,5 +1,5 @@
 <?php
-namespace Behat\Zf2Extension\Context\ClassGuesser;
+namespace MvLabs\Zf2Extension\Context\ClassGuesser;
 
 use Behat\Behat\Context\ClassGuesser\ClassGuesserInterface;
 
