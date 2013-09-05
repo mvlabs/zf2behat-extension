@@ -4,11 +4,10 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
       <parameters>
         <parameter key="behat.zf2_extension.module"></parameter>
-        <parameter key="behat.zf2_extension.config.path">config/</parameter>
-        
+       
         <parameter key="behat.zf2_extension.application_config_path">config/test.application.config.php</parameter>
         
-        <parameter key="behat.zf2_extension.application.class">Zend\Mvc\Application</parameter>
+        <parameter key="behat.zf2_extension.zf_mvc_application.class">Zend\Mvc\Application</parameter>
         
         <parameter key="behat.zf2_extension.context.class_suffix">Features\Context\FeatureContext</parameter>
         <parameter key="behat.zf2_extension.context.path_suffix">Features</parameter>
@@ -18,15 +17,20 @@
         <parameter key="behat.console.processor.locator.class">Behat\Zf2Extension\Console\Processor\LocatorProcessor</parameter>
         <parameter key="behat.console.processor.init.class">Behat\Zf2Extension\Console\Processor\InitProcessor</parameter>
         
-     </parameters>
+        <parameter key="zf2_extension.moduledetailretriever.class">Behat\Zf2Extension\Zf2Retriever\ModuleDetailRetriever</parameter>
+    </parameters>
 
     <services>
-        <service id="behat_zf2_extension.application" class="%behat.zf2_extension.application.class%" factory-class="%behat.zf2_extension.application.class%" factory-method="init">
+        <service id="behat_zf2_extension.zf_mvc_application" class="%behat.zf2_extension.zf_mvc_application.class%" factory-class="%behat.zf2_extension.zf_mvc_application.class%" factory-method="init">
             <argument>%behat.zf2_extension.application_config_path%</argument>
         </service>
-                     
+        
+        <service id="zf2_extesion.moduledetailretriever" class="%zf2_extension.moduledetailretriever.class%">
+            <argument type="service" id="behat_zf2_extension.zf_mvc_application"/>
+        </service>
+                                                     
         <service id="behat.zf2_extension.context.initializer" class="%behat.zf2_extension.context.initializer.class%">
-           <argument type="service" id="behat_zf2_extension.application" />
+           <argument type="service" id="behat_zf2_extension.zf_mvc_application" />
            <tag name="behat.context.initializer" />
         </service>
         

@@ -43,19 +43,42 @@ class InitProcessor extends BaseProcessor{
       if ($input->getOption('init')) {
 
          $this->initBehatFolderStructure($input, $output);
-
          exit(0);
+         
       }
             
    }
    
    protected function initBehatFolderStructure(InputInterface $input, OutputInterface $output) {
        
-       $featuresPath = $this->container->get("behat.paths.features");
-       $basePath = $this->container->getParameter("behat.paths.base").DIRECTORY_SEPARATOR ;
-       $contextPath = $featuresPath.DIRECTORY_SEPARATOR.self::CONTEXT_FOLDER;
-       $namespace = $this->container->getParameter("behat.zf2_extension.module");
        
+       $featuresPath = $input->getArgument('features');
+       
+       
+       $moduleDetailRetriever =  $this->container->get("zf2_extesion.moduledetailretriever");
+       $basePath = $this->container->getParameter("behat.paths.base").DIRECTORY_SEPARATOR ;
+       $contextPath = $featuresPath.DIRECTORY_SEPARATOR.self::CONTEXT_FOLDER ;
+       $modulePath = null;
+       
+       if($moduleName = $this->container->getParameter("behat.zf2_extension.module")) {
+           
+           $modulePath = $moduleDetailRetriever->getModulePath($moduleName);
+           
+       }
+       
+       if(!$modulePath) {
+           
+           
+           
+       }
+       
+       
+       if(!$featuresPath) {
+             
+            $featuresPath = $this->container->getParameter("behat.paths.features") ;
+            
+       }
+         
        
        if(!is_dir($featuresPath)) {
          
@@ -73,7 +96,7 @@ class InitProcessor extends BaseProcessor{
            
            file_put_contents($contextPath.DIRECTORY_SEPARATOR.self::CONTEXT_FILE, 
                    strtr($this->getFeatureContextSkelet(),array(
-                       "%NAMESPACE%"=>$namespace
+                       "%NAMESPACE%"=>$module
                    ))
            );
            

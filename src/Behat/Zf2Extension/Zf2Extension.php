@@ -28,7 +28,12 @@ class Zf2Extension extends Extension
              
          }
          
-                 
+         if(isset($config['config_path'])){
+             
+             $container->setParameter('behat.zf2_extension.application_config_path', $config['config_path']);
+             
+         }
+                         
     }
        
     public function getCompilerPasses() {

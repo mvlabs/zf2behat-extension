@@ -42,48 +42,62 @@ class LocatorProcessor extends BaseProcessor{
     
    public function process(InputInterface $input, OutputInterface $output){
         
-        
+        $moduleDetailRetriever =  $this->container->get("zf2_extesion.moduledetailretriever");
         $featuresPath = $input->getArgument('features');
         
-        $pathSuffix = $this->container->getParameter('behat.zf2_extension.context.path_suffix');
-        
         $moduleName = $this->container->getParameter('behat.zf2_extension.module');
-            
-        $modulePath = $this->getModulePath($moduleName);
-            
+        $pathSuffix = $this->container->getParameter('behat.zf2_extension.context.path_suffix');
+        $modulePath = null;
        
-        //@TODO Module from feature path
-        //$path = realpath(preg_replace('/\.feature\:.*$/', '.feature', $featuresPath));
         
-       if($modulePath) {
+        if($moduleName) {
         
+           $modulePath = $moduleDetailRetriever->getModulePath($moduleName);
+           
+       }
+            
+       if(!$modulePath && $featuresPath){
+           
+          $filteredPath = realpath(preg_replace('/\.feature\:.*$/', '.feature', $featuresPath));
+          
+          foreach($moduleDetailRetriever->getLoadedModules() as $moduleName) {
+              
+              if(false !== strpos($filteredPath, $moduleDetailRetriever->getModulePath($moduleName))) {
+                  
+                  $modulePath = $moduleDetailRetriever->getModulePath($moduleName);
+                  break;
+              } 
+              
+          }
+          
+       }elseif($modulePath && $featuresPath) {
+           
            $featuresPath = $modulePath.DIRECTORY_SEPARATOR.$pathSuffix.DIRECTORY_SEPARATOR.$featuresPath;
            
        }
        
-       $featuresPath = $this->container->get("behat.paths.features");
+       
+       if($moduleName){
+          
+           $this->container
+                 ->get('zf2.context.class_guesser')
+                 ->setModuleNamespace($moduleName);
+           
+       } 
+       
+       if(!$featuresPath) {
+           
+           $featuresPath = $this->container->getParameter('behat.paths.features');
+           
+       }
        
        
-       $this->container
-             ->get('zf2.context.class_guesser')
-             ->setModuleNamespace($moduleName);
-              
        $this->container
             ->get('behat.console.command')
             ->setFeaturesPaths($featuresPath ? array($featuresPath) : array());
        
     }
-    
-    private function getModulePath($moduleName){
-       
-        $mvcApplication = $this->container->get('behat_zf2_extension.application');
-        $loadedModules = $mvcApplication->getServiceManager()->get('ModuleManager')->getLoadedModules();
-        $module = $loadedModules[$moduleName];
-        $moduleConfig = $module->getAutoloaderConfig();
-        return $moduleConfig['Zend\Loader\StandardAutoloader']['namespaces']['ModuleDemo'];
         
-    }
-    
 }
 
 ?>

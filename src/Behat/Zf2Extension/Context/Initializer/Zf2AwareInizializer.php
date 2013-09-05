@@ -47,9 +47,9 @@ class Zf2AwareInizializer implements InitializerInterface
 
     public function initialize(ContextInterface $context)
     {
-        $context->setZf2App($this->zf2App);
-              
 
+        $context->setZf2App($this->zf2App);
+        
     }
 
 }

@@ -31,13 +31,14 @@ class Zf2ClassGuesser implements ClassGuesserInterface{
     }
     
     public function guess() {
-         
+        
         if(class_exists($fullContextNamespace = $this->namespace."\\".$this->classSuffix)) {
             
             return $fullContextNamespace ;
             
         }
         
+        return $this->classSuffix;
     }   
     
 }
