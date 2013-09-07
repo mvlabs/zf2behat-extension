@@ -3,16 +3,9 @@ default:
       MvLabs\Zf2Extension\Zf2Extension:
        config: config/test.application.config.php
        module: ModuleDemo
-ordinary:
-     filters:
-        tags: "~@web"
-     
-web:
-  filters:
-      tags: '@web'
+          
+custom-context:
   context:
-      class: ModuleDemo\Features\Context\WebContext
-  MvLabs\Zf2Extension\Zf2Extension:
-       config: config/test.application.config.php
-  Behat\MinkExtension\Extension:
-      goutte:~
+      class: ModuleDemo\Features\Context\CustomContext
+  
+    

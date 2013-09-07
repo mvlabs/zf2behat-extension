@@ -9,8 +9,16 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
+        return  "<html>".
+                    "<body>".
+                        "<h1>MMOPORTAL</h1>".
+                        "<ul>".
+                            "<li>Rift</li>".
+                            "<li><a href='?type=ddo'>DDO</a></li>".
+                        "</ul>".
+                    "</body>".
+                "</html>";
+                 
         
-        echo "Hello world";
-        //return new ViewModel();
     }
 }

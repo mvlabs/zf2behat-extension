@@ -11,4 +11,4 @@ before_script:
   - composer self-update
   - composer install --dev --prefer-source --no-progress -n
   
-script: 'vendor/bin/behat -c testapp/behat.yml'
+script: 'vendor/bin/behat -c skeletontest/behat.yml && vendor/bin/behat -c=skeletontest/behat.yml -p=custom-context'
