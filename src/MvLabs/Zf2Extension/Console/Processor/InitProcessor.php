@@ -148,7 +148,7 @@ implements Zf2AwareContextInterface
     }
 
     /**
-    * Sets HttpKernel instance.
+    * Sets Zend\Mvc\Application instance.
     * This method will be automatically called by Zf2Extension ContextInitializer.
     *
     * @param Zend\Mvc\Application $zf2MvcApplication
