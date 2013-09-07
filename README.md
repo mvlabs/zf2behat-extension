@@ -1,6 +1,6 @@
 mvlabs/zf2behat-extension
 ==============
-{<img src="https://travis-ci.org/mvlabs/zf2behat-extension.png" />}[https://travis-ci.org/mvlabs/zf2behat-extension.png]
+<img src="https://travis-ci.org/mvlabs/zf2behat-extension.png" />
 Behat extension for Zend Framework 2 inspired by Symfony2extension by Konstantin Kudryashov
 
 Requirements
