@@ -21,30 +21,29 @@ class Zf2Extension extends Extension
     {
          $loader = new XmlFileLoader( $container, new FileLocator(__DIR__.'/services'));
          $loader->load('zf2.xml');
-         
-       
-         if(isset($config['module'])) {
-             
+
+         if (isset($config['module'])) {
+
              $container->setParameter('behat.zf2_extension.module', $config['module']);
-             
+
          }
-         
-         if(isset($config['config'])){
-             
+
+         if (isset($config['config'])) {
+
              $container->setParameter('behat.zf2_extension.config_path', $config['config']);
-             
+
          }
-                         
+
     }
-       
-    public function getCompilerPasses() {
-       
+
+    public function getCompilerPasses()
+    {
         return array(
-            
+
             new Zf2ApplicationCompilerPasses()
-            
+
         );
-        
+
     }
 }
 

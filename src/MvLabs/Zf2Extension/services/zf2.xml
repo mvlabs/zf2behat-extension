@@ -5,19 +5,19 @@
       <parameters>
         <parameter key="behat.zf2_extension.module"></parameter>
         <parameter key="behat.zf2_extension.config_data"></parameter>
-        
+
         <parameter key="behat.zf2_extension.config_path">config/application.config.php</parameter>
-             
+
         <parameter key="behat.zf2_extension.zf_mvc_application.class">Zend\Mvc\Application</parameter>
-        
+
         <parameter key="behat.zf2_extension.context.class_suffix">Features\Context\FeatureContext</parameter>
         <parameter key="behat.zf2_extension.context.path_suffix">Features</parameter>
-        
+
         <parameter key="behat.zf2_extension.context.initializer.class">MvLabs\Zf2Extension\Context\Initializer\Zf2AwareInizializer</parameter>
         <parameter key="behat.zf2_extension.class_guesser.class">MvLabs\Zf2Extension\Context\ClassGuesser\Zf2ClassGuesser</parameter>
         <parameter key="behat.console.processor.locator.class">MvLabs\Zf2Extension\Console\Processor\LocatorProcessor</parameter>
         <parameter key="behat.console.processor.init.class">MvLabs\Zf2Extension\Console\Processor\InitProcessor</parameter>
-        
+
         <parameter key="zf2_extension.moduledetailretriever.class">MvLabs\Zf2Extension\ModuleRetriever\ModuleDetailRetriever</parameter>
     </parameters>
 
@@ -25,16 +25,16 @@
         <service id="behat_zf2_extension.zf_mvc_application" class="%behat.zf2_extension.zf_mvc_application.class%" factory-class="%behat.zf2_extension.zf_mvc_application.class%" factory-method="init">
             <argument>%behat.zf2_extension.config_data%</argument>
         </service>
-        
+
         <service id="zf2_extesion.moduledetailretriever" class="%zf2_extension.moduledetailretriever.class%">
             <argument type="service" id="behat_zf2_extension.zf_mvc_application"/>
         </service>
-                                                     
+
         <service id="behat.zf2_extension.context.initializer" class="%behat.zf2_extension.context.initializer.class%">
            <argument type="service" id="behat_zf2_extension.zf_mvc_application" />
            <tag name="behat.context.initializer" />
         </service>
-        
+
         <service id="zf2.context.class_guesser" class="%behat.zf2_extension.class_guesser.class%">
             <argument>%behat.zf2_extension.context.class_suffix%</argument>
             <tag name="behat.context.class_guesser" priority="5" />

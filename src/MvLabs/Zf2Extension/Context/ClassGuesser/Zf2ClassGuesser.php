@@ -12,35 +12,31 @@ use Behat\Behat\Context\ClassGuesser\ClassGuesserInterface;
  *  Any other use shall be considered forbidden, unless otherwise specified.
  * @link http://www.mvassociates.it
  */
-class Zf2ClassGuesser implements ClassGuesserInterface{
-   
-    
+class Zf2ClassGuesser implements ClassGuesserInterface
+{
     private $classSuffix;
     private $namespace;
-    
-    public function __construct($classSuffix = 'Features\\Context\\FeatureContext') {
-        
-        $this->classSuffix = $classSuffix;
-        
-    }
-    
-    public function setModuleNamespace($namespace){
-        
-        $this->namespace = $namespace;
-        
-    }
-    
-    public function guess() {
-        
-        if(class_exists($fullContextNamespace = $this->namespace."\\".$this->classSuffix)) {
-            
-            return $fullContextNamespace ;
-            
-        }
-        
-        return $this->classSuffix;
-    }   
-    
-}
 
-?>
+    public function __construct($classSuffix = 'Features\\Context\\FeatureContext')
+    {
+        $this->classSuffix = $classSuffix;
+
+    }
+
+    public function setModuleNamespace($namespace)
+    {
+        $this->namespace = $namespace;
+
+    }
+
+    public function guess()
+    {
+        if (class_exists($fullContextNamespace = $this->namespace."\\".$this->classSuffix)) {
+            return $fullContextNamespace ;
+
+        }
+
+        return $this->classSuffix;
+    }
+
+}
