@@ -1,87 +1,105 @@
 mvlabs/zf2behat-extension
 ==============
 
-Behat extension for Zend Framework 2 load Zend\Mvc\Application implementing Zf2AwareContextInterface in your context
+Behat extension for Zend Framework 2 inspired by Symfony2extension by Konstantin Kudryashov
 
 Requirements
 =============
+The Extension requires:
 ```
- "require": {
-	"php":">=5.3.3",
-	"behat/behat":"=2.4@stable",
-    }
+ "php":">=5.3.3",
+  "behat/behat":"=2.4@stable",
+  "zendframework/zendframework":"2.2.*"
 ```
 Installation
-==============
-Add in your composer.json
+=============
+This extension need composer to be installed. Add in your composer.json
 ```
 "require": {
-     "mvlabs/zf2behat-extension" : "0.5",
+     "mvlabs/zf2behat-extension" : "0.9",
 }
 
 ```
 
-Usage example
+How to Use
+==========
+
+The extension could be used in 2 different ways: 
+1.If you are using a php version 5.4+, you can use MvLabs\Zf2BehatExtension\Context\Zf2Dictionary trait 
+  which provides basic ZendFramework 2 functionality. This functionality could be used only in one Context though.
+  
+2.You could implement the MvLabs\Zf2BehatExtension\Context\Zf2AwareContextInterface on every context avoiding to call parent context 
+  from subcontexts.
+  
+Both methods call a method setZf2App(Application $zf2Application) needed to set in a private property Zend\Mvc\Application to be reused 
+on every step needed 
+
+
+Initialization inside a Module
+==============================
+
+In order to initialize your feature suite inside a Zend Framework 2 module, you need to execute:
+```
+$ php bin\behat --init "<module name>"
+
+```
+After the command is executed it will create a Features folder inside your module with a extension ready FeatureContext inside the Context subfolder
+
+
+Run your features
+=================
+
+You could run your module suite executing:
+```
+$ php bin\behat "<module name>"
+
+```
+If you run specific module suite often it's possible set a "bundle" parameter inside a profile in your 
+behat.yml file like in the example below:
+```
+default:
+  extensions:
+      MvLabs\Zf2Extension\Zf2Extension:
+        module: User
+example:
+   extensions:
+      MvLabs\Zf2Extension\Zf2Extension:
+        module: Album
+    
+```
+After setting those profile you could run your bundle simplie executing:
+ ```
+$ php bin\behat -p=example
+
+```
+You could in addition run a specific feature executing:
+```
+$ php bin\behat "<module folder/feature folder/feature file>"
+
+```
+
+Appication Level Feature Suite
+==============================
+
+If you don't want to use module-centric structure it's possible maitain an application structure
+specifing a features path and context class in your behat.yml file like in the example:
+
+default:
+  paths:
+    features: features
+  context:
+      class: ModuleDemo\Features\Context\CustomContext
+
+Using this path you shuold only remember to add your context class in the autoloader.
+
+Configuration
 =============
 
-Add the extension in behat.yml file and set under zf2_config_path the location of the file application.config.php
-
-```
-    Behat\Zf2Extension\Zf2Extension:
-      zf2_config_path: "config/application.config.php"
-
-```
-
-Implements in every context file Behat\Zf2Extension\Context\Zf2AwareContextInterface and pass the value of $zf2Application too a property
-
-```
-<?php
-
-namespace testapp\src\features\bootstrap;
-
-use Behat\Behat\Context\ClosuredContextInterface,
-    Behat\Behat\Context\TranslatedContextInterface,
-    Behat\Behat\Context\BehatContext,
-    Behat\Behat\Exception\PendingException;
-use Behat\Gherkin\Node\PyStringNode,
-    Behat\Gherkin\Node\TableNode;
-
-use Behat\Zf2Extension\Context\Zf2AwareContextInterface;
-//
-// Require 3rd-party libraries here:
-//
-//   require_once 'PHPUnit/Autoload.php';
-//   require_once 'PHPUnit/Framework/Assert/Functions.php';
-//
+ module - set the bundle to be runned for a specific profile
+ config - set a custom configuration file. if it is not specified config/application.config.php will be loaded
 
 
-/**
- * Features context.
- */
-class FeatureContext extends BehatContext implements Zf2AwareContextInterface
-{
 
-    private $zf2Application;
-    private $serviceManager;
-    /**
-     * Initializes context.
-     * Every scenario gets it's own context object.
-     *
-     * @param array $parameters context parameters (set them up through behat.yml)
-     */
-    public function __construct(array $parameters)
-    {
 
-    }
-   
-
-    public function setZf2App( \Zend\Mvc\Application $zf2Application )
-    {
-        $this->zf2Application = $zf2Application;
-
-    }
-}
-
-```
 
 
