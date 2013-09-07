@@ -1,7 +1,6 @@
 mvlabs/zf2behat-extension
 ==============
-[![Build Status](https://travis-ci.org/mvlabs/zf2behat-extension.png)
-
+{<img src="https://travis-ci.org/mvlabs/zf2behat-extension.png" />}[https://travis-ci.org/mvlabs/zf2behat-extension.png]
 Behat extension for Zend Framework 2 inspired by Symfony2extension by Konstantin Kudryashov
 
 Requirements
@@ -27,11 +26,10 @@ How to Use
 
 The extension could be used in 2 different ways:
 
-1. If you are using a php version 5.4+, you can use MvLabs\Zf2BehatExtension\Context\Zf2Dictionary trait 
-   which provides basic ZendFramework 2 functionality. This functionality could be used only in one Context though.
-  
-2. You could implement the MvLabs\Zf2BehatExtension\Context\Zf2AwareContextInterface on every context avoiding to call parent context 
-   from subcontexts.
+1.  If you are using a php version 5.4+, you can use MvLabs\Zf2BehatExtension\Context\Zf2Dictionary trait 
+    which provides basic ZendFramework 2 functionality. This functionality could be used only in one Context though.
+2.  You could implement the MvLabs\Zf2BehatExtension\Context\Zf2AwareContextInterface on every context avoiding to call parent context 
+    from subcontexts.
   
 Both methods call a method setZf2App(Application $zf2Application) needed to set in a private property Zend\Mvc\Application to be reused 
 on every step needed 
