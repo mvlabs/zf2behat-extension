@@ -12,16 +12,17 @@ class Zf2ApplicationCompilerPasses  implements CompilerPassInterface {
          
       //Loading Configuration
       $applicationPath = $container->getParameter('behat.paths.base');
-      $configurationPath = $container->getParameter("behat.zf2_extension.application_config_path");
-      $fullApplicationConfigPath = $applicationPath.DIRECTORY_SEPARATOR.$configurationPath;
-                                            
-      if(file_exists($fullApplicationConfigPath)){
+      $configPath = $container->getParameter("behat.zf2_extension.config_path");
+      $fullConfigPath = $applicationPath.DIRECTORY_SEPARATOR.$configPath;
+      
+      if(!file_exists($fullConfigPath)){
          
-           $configuration = require $fullApplicationConfigPath;
+           throw new \RuntimeException("invalid config path ".$fullConfigPath);
            
       }
-            
-      $container->setParameter('behat.zf2_extension.application_config_path',$configuration);
+      
+      $configuration = require $fullConfigPath;
+      $container->setParameter('behat.zf2_extension.config_data',$configuration);
       
       //Get A list of all laoded module
       

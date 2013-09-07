@@ -1,7 +1,7 @@
 default:
   extensions:
       MvLabs\Zf2Extension\Zf2Extension:
-      config_path : "config/test.application.config.php"
+       config: config/test.application.config.php
     
 interface:
    filters:

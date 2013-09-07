@@ -65,12 +65,7 @@ class InitProcessor extends BaseProcessor{
            $modulePath = $moduleDetailRetriever->getModulePath($moduleName);
            
        }
-       
-       if(!$modulePath) {
-           
-           
-           
-       }
+        
        
        
        if(!$featuresPath) {

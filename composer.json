@@ -12,12 +12,12 @@
     
     "require": {
 	"php":">=5.3.3",
-	"behat/behat":"=2.4@stable"
+	"behat/behat":"=2.4@stable",
+        "zendframework/zendframework":"2.2.*"
     },
             
     "require-dev" : {
-        
-        "zendframework/zendframework":"2.2.*",
+          
         "behat/mink": "~1.4.3",
         "behat/mink-extension": "~1.0.1"
         
@@ -25,7 +25,7 @@
 
    "autoload": {
 	"psr-0":{
-		"MvLabs\\Zf2Extension":"src/"
+           "MvLabs\\Zf2Extension":"src/"
 	}
    }
 }

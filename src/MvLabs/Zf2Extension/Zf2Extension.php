@@ -4,7 +4,7 @@ namespace MvLabs\Zf2Extension;
 
 use Behat\Behat\Extension\Extension;
 
-use Behat\Zf2Extension\Compiler\Zf2ApplicationCompilerPasses;
+use MvLabs\Zf2Extension\Compiler\Zf2ApplicationCompilerPasses;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder,
     Symfony\Component\DependencyInjection\Loader\XmlFileLoader,
@@ -21,6 +21,7 @@ class Zf2Extension extends Extension
     {
          $loader = new XmlFileLoader( $container, new FileLocator(__DIR__.'/services'));
          $loader->load('zf2.xml');
+         
        
          if(isset($config['module'])) {
              
@@ -28,9 +29,9 @@ class Zf2Extension extends Extension
              
          }
          
-         if(isset($config['config_path'])){
+         if(isset($config['config'])){
              
-             $container->setParameter('behat.zf2_extension.application_config_path', $config['config_path']);
+             $container->setParameter('behat.zf2_extension.config_path', $config['config']);
              
          }
                          
