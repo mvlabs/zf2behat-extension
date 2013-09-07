@@ -1,6 +1,7 @@
+<img src="https://travis-ci.org/mvlabs/zf2behat-extension.png" />
+
 mvlabs/zf2behat-extension
 ==============
-
 Behat extension for Zend Framework 2 inspired by Symfony2extension by Konstantin Kudryashov
 
 Requirements
@@ -16,7 +17,7 @@ Installation
 This extension need composer to be installed. Add in your composer.json
 ```
 "require": {
-     "mvlabs/zf2behat-extension" : "0.9",
+     "mvlabs/zf2behat-extension" : "dev-master"
 }
 
 ```
@@ -24,12 +25,12 @@ This extension need composer to be installed. Add in your composer.json
 How to Use
 ==========
 
-The extension could be used in 2 different ways: 
-1.If you are using a php version 5.4+, you can use MvLabs\Zf2BehatExtension\Context\Zf2Dictionary trait 
-  which provides basic ZendFramework 2 functionality. This functionality could be used only in one Context though.
-  
-2.You could implement the MvLabs\Zf2BehatExtension\Context\Zf2AwareContextInterface on every context avoiding to call parent context 
-  from subcontexts.
+The extension could be used in 2 different ways:
+
+1.  If you are using a php version 5.4+, you can use MvLabs\Zf2BehatExtension\Context\Zf2Dictionary trait 
+    which provides basic ZendFramework 2 functionality. This functionality could be used only in one Context though.
+2.  You could implement the MvLabs\Zf2BehatExtension\Context\Zf2AwareContextInterface on every context avoiding to call parent context 
+    from subcontexts.
   
 Both methods call a method setZf2App(Application $zf2Application) needed to set in a private property Zend\Mvc\Application to be reused 
 on every step needed 
@@ -84,19 +85,21 @@ Appication Level Feature Suite
 If you don't want to use module-centric structure it's possible maitain an application structure
 specifing a features path and context class in your behat.yml file like in the example:
 
+```
 default:
   paths:
     features: features
   context:
       class: ModuleDemo\Features\Context\CustomContext
+```
 
 Using this path you shuold only remember to add your context class in the autoloader.
 
 Configuration
 =============
 
- module - set the bundle to be runned for a specific profile
- config - set a custom configuration file. if it is not specified config/application.config.php will be loaded
+ 1. module - set the bundle to be runned for a specific profile
+ 2. config - set a custom configuration file. if it is not specified config/application.config.php will be loaded
 
 
 
