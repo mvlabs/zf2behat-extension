@@ -43,20 +43,23 @@ class LocatorProcessor extends BaseProcessor{
    public function process(InputInterface $input, OutputInterface $output){
              
         $moduleDetailRetriever =  $this->container->get("zf2_extesion.moduledetailretriever");
+       
         $featuresPath = $input->getArgument('features');
         
         $moduleName = $this->container->getParameter('behat.zf2_extension.module');
+        $modulePath = $moduleDetailRetriever->getModulePath($featuresPath);
+        
         $pathSuffix = $this->container->getParameter('behat.zf2_extension.context.path_suffix');
-        $modulePath = null;
-       
-        
-        if($moduleName) {
-        
-           $modulePath = $moduleDetailRetriever->getModulePath($moduleName);
-           
-       }
+               
+        if( $moduleName && !$modulePath){
             
-       if(!$modulePath && $featuresPath){
+            $modulePath = $moduleDetailRetriever->getModulePath($moduleName);
+            
+        }elseif( !$moduleName && file_exists($modulePath)){
+            
+            $moduleName = $featuresPath;
+            
+        }elseif(!$moduleName && !$modulePath){
            
           $filteredPath = realpath(preg_replace('/\.feature\:.*$/', '.feature', $featuresPath));
           
@@ -70,13 +73,10 @@ class LocatorProcessor extends BaseProcessor{
               
           }
           
-       }elseif($modulePath && $featuresPath) {
-           
-           $featuresPath = $modulePath.DIRECTORY_SEPARATOR.$pathSuffix.DIRECTORY_SEPARATOR.$featuresPath;
-           
        }
-       
-       
+           
+       $featuresPath = $modulePath.DIRECTORY_SEPARATOR.$pathSuffix;
+            
        if($moduleName){
           
            $this->container
@@ -87,11 +87,10 @@ class LocatorProcessor extends BaseProcessor{
        
        if(!$featuresPath) {
            
-           $featuresPath = $this->container->getParameter('behat.paths.features');
+           $featuresPath = realpath($this->container->getParameter('behat.paths.features'));
            
        }
-       
-       
+           
        $this->container
             ->get('behat.console.command')
             ->setFeaturesPaths($featuresPath ? array($featuresPath) : array());

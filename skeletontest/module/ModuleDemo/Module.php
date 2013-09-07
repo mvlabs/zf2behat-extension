@@ -31,7 +31,7 @@ class Module
             
             'invokables'=>array(
                 
-              'demo.service'=>'ModuleDemo\Service\ModuleExampleService'
+              'moduledemo.service'=>'ModuleDemo\Service\ModuleDemoService'
                 
             ),
             

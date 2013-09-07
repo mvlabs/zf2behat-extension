@@ -24,9 +24,7 @@ class Zf2ApplicationCompilerPasses  implements CompilerPassInterface {
       $configuration = require $fullConfigPath;
       $container->setParameter('behat.zf2_extension.config_data',$configuration);
       
-      //Get A list of all laoded module
-      
-     // $mvcApplication = $container->get("behat_zf2_extension.zf_mvc_application");
+      //Get A list of all loaded module
       $moduleDetailRetrtiever = $container->get("zf2_extesion.moduledetailretriever");
       
      if($moduleName = $container->getParameter('behat.zf2_extension.module')) {

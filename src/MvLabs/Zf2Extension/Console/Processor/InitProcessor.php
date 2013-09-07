@@ -118,7 +118,7 @@ use Behat\Behat\Context\ClosuredContextInterface,
 use Behat\Gherkin\Node\PyStringNode,
     Behat\Gherkin\Node\TableNode;
 
-use Behat\Zf2Extension\Context\Zf2AwareContextInterface;
+use MvLabs\Zf2Extension\Context\Zf2AwareContextInterface;
 
 use Zend\Mvc\Application;       
 //

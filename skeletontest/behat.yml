@@ -2,8 +2,17 @@ default:
   extensions:
       MvLabs\Zf2Extension\Zf2Extension:
        config: config/test.application.config.php
-    
-interface:
-   filters:
-     tags: "~@usetrait"
-  
+       module: ModuleDemo
+ordinary:
+     filters:
+        tags: "~@web"
+     
+web:
+  filters:
+      tags: '@web'
+  context:
+      class: ModuleDemo\Features\Context\WebContext
+  MvLabs\Zf2Extension\Zf2Extension:
+       config: config/test.application.config.php
+  Behat\MinkExtension\Extension:
+      goutte:~

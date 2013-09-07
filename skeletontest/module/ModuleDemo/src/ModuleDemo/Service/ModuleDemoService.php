@@ -13,5 +13,12 @@ class ModuleDemoService
        
         
     }
+    
+    public function printHello(){
+        
+        return "Hello world";
+        
+    }
+    
    
 }
