@@ -41,8 +41,7 @@ class LocatorProcessor extends BaseProcessor{
     
     
    public function process(InputInterface $input, OutputInterface $output){
-        
-       die();
+             
         $moduleDetailRetriever =  $this->container->get("zf2_extesion.moduledetailretriever");
         $featuresPath = $input->getArgument('features');
         

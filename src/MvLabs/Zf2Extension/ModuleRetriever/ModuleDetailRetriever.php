@@ -13,6 +13,9 @@ use Zend\Mvc\Application;
  */
 class ModuleDetailRetriever {
     
+    const STANDARD_AUTOLOLOADER = 'Zend\Loader\StandardAutoloader'; 
+    const NAMESPACE_KEY = 'namespaces';
+    
     private $zf2MvcApplication;
     private $loadedModules;
     
@@ -31,23 +34,23 @@ class ModuleDetailRetriever {
         return array_keys($this->loadedModules);
         
     }
-       
+        
     /**
      * Retrieve the module path
      * @param string $moduleName
      */
     public function getModulePath($moduleName) {
                        
-        if(!array_key_exists($moduleName, $this->loadedModules)){
+        if(array_key_exists($moduleName, $this->loadedModules)){
             
-            throw new \OutOfRangeException("Invalid module: ".$moduleName);
+              $module = $this->loadedModules[$moduleName];
+              $moduleConfig = $module->getAutoloaderConfig();
+       
+               return $moduleConfig[self::STANDARD_AUTOLOLOADER][self::NAMESPACE_KEY][$moduleName];
             
         }
         
-        $module = $this->loadedModules[$moduleName];
-        $moduleConfig = $module->getAutoloaderConfig();
-       
-        return $moduleConfig['Zend\Loader\StandardAutoloader']['namespaces'][$moduleName];
+        return null;
         
     }   
    

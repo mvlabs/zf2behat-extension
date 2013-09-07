@@ -16,9 +16,10 @@ use Behat\Behat\Console\Processor\InitProcessor as BaseProcessor;
 
 class InitProcessor extends BaseProcessor{
     
-    const CONTEXT_FOLDER = "Context";
+    const CONTEXT = "Context";
     const CONTEXT_FILE = "FeatureContext.php";
-    
+    const FEATURES = "Features";
+        
     private $container;
     
     /**
@@ -32,10 +33,10 @@ class InitProcessor extends BaseProcessor{
     }
     
    public function process(InputInterface $input, OutputInterface $output) {
-           
-      if(!$input->getArgument('features') && $input->getOption('init')){
+      
+     if(!$input->getArgument('features') && $input->getOption('init')){
           
-          throw new \InvalidArgumentException("Provide features argument in order to init suite");
+          throw new \InvalidArgumentException("Provide a valid zf2 Module name in order to init suite");
           
       }
       
@@ -51,29 +52,24 @@ class InitProcessor extends BaseProcessor{
    
    protected function initBehatFolderStructure(InputInterface $input, OutputInterface $output) {
        
-       
-       $featuresPath = $input->getArgument('features');
-       
-       
+      
+       $moduleName = $input->getArgument('features');
        $moduleDetailRetriever =  $this->container->get("zf2_extesion.moduledetailretriever");
+       
+       $modulePath = $moduleDetailRetriever->getModulePath($moduleName);
+       
+       
+       if(!$modulePath || !file_exists($modulePath)){
+           
+           throw new \UnexpectedValueException(sprintf("Invalid module %s provided",$moduleName));
+           
+       }
+      
+       
+       $featuresPath = $modulePath.DIRECTORY_SEPARATOR.self::FEATURES;
+       $contextPath = $featuresPath.DIRECTORY_SEPARATOR.self::CONTEXT ;
        $basePath = $this->container->getParameter("behat.paths.base").DIRECTORY_SEPARATOR ;
-       $contextPath = $featuresPath.DIRECTORY_SEPARATOR.self::CONTEXT_FOLDER ;
-       $modulePath = null;
-       
-       if($moduleName = $this->container->getParameter("behat.zf2_extension.module")) {
-           
-           $modulePath = $moduleDetailRetriever->getModulePath($moduleName);
-           
-       }
-        
-       
-       
-       if(!$featuresPath) {
-             
-            $featuresPath = $this->container->getParameter("behat.paths.features") ;
             
-       }
-         
        
        if(!is_dir($featuresPath)) {
          
@@ -85,13 +81,14 @@ class InitProcessor extends BaseProcessor{
            
        }
        
+      
        if(!is_dir($contextPath)) {
            
            mkdir($contextPath,0777,true);
            
            file_put_contents($contextPath.DIRECTORY_SEPARATOR.self::CONTEXT_FILE, 
                    strtr($this->getFeatureContextSkelet(),array(
-                       "%NAMESPACE%"=>$module
+                       "%NAMESPACE%"=>$moduleName
                    ))
            );
            
@@ -100,6 +97,7 @@ class InitProcessor extends BaseProcessor{
                str_replace($basePath, '', realpath($contextPath)) . DIRECTORY_SEPARATOR .
                'FeatureContext.php <comment>- place your feature related code here</comment>'
            );
+           
        }
         
        
