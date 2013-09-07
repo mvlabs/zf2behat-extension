@@ -1,6 +1,7 @@
+<img src="https://travis-ci.org/mvlabs/zf2behat-extension.png" />
+
 mvlabs/zf2behat-extension
 ==============
-<img src="https://travis-ci.org/mvlabs/zf2behat-extension.png" />
 Behat extension for Zend Framework 2 inspired by Symfony2extension by Konstantin Kudryashov
 
 Requirements
@@ -16,7 +17,7 @@ Installation
 This extension need composer to be installed. Add in your composer.json
 ```
 "require": {
-     "mvlabs/zf2behat-extension" : "dev-master",
+     "mvlabs/zf2behat-extension" : "dev-master"
 }
 
 ```
