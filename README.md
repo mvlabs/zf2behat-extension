@@ -1,6 +1,6 @@
 mvlabs/zf2behat-extension
 ==============
-https://travis-ci.org/mvlabs/zf2behat-extension.png
+[![Build Status](https://travis-ci.org/mvlabs/zf2behat-extension.png)
 
 Behat extension for Zend Framework 2 inspired by Symfony2extension by Konstantin Kudryashov
 
@@ -17,7 +17,7 @@ Installation
 This extension need composer to be installed. Add in your composer.json
 ```
 "require": {
-     "mvlabs/zf2behat-extension" : "0.9",
+     "mvlabs/zf2behat-extension" : "dev-master",
 }
 
 ```
@@ -25,7 +25,8 @@ This extension need composer to be installed. Add in your composer.json
 How to Use
 ==========
 
-The extension could be used in 2 different ways: 
+The extension could be used in 2 different ways:
+
 1. If you are using a php version 5.4+, you can use MvLabs\Zf2BehatExtension\Context\Zf2Dictionary trait 
    which provides basic ZendFramework 2 functionality. This functionality could be used only in one Context though.
   
