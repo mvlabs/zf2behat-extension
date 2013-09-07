@@ -1,8 +1,6 @@
 <?php
 namespace MvLabs\Zf2Extension\Context;
 
-use Zend\ServiceManager\Exception\InvalidServiceNameException;
-
 /**
  * Provide common services Zf2 functionalities
  *
@@ -12,36 +10,32 @@ use Zend\ServiceManager\Exception\InvalidServiceNameException;
  *  Any other use shall be considered forbidden, unless otherwise specified.
  * @link http://www.mvassociates.it
  */
-trait Zf2Dictionary {
-  
+trait Zf2Dictionary
+{
     private $zf2Application;
-    
-    
+
     /**
      * Set Zf2 Zend\Mvc\Application instance
      */
-    
-    public function setZf2Application( Zend\Mvc\Application $zf2Application ) {
-        
-        $this->zf2Application = $zf2Application;
-        
-    }
-    
-    public function getServiceManager() {
-        
-        return $this->zf2Application->getServiceManager();
-        
-    }
-    
-    public function getServiceByAlias( $serviceAlias ){
-        
-        $serviceManager = $this->getServiceManager();
-               
-        return $serviceManager->get( $serviceAlias);
-        
-    }
-    
-    
-}
 
-?>
+    public function setZf2App( Zend\Mvc\Application $zf2Application )
+    {
+        $this->zf2Application = $zf2Application;
+
+    }
+
+    public function getServiceManager()
+    {
+        return $this->zf2Application->getServiceManager();
+
+    }
+
+    public function getServiceByAlias( $serviceAlias )
+    {
+        $serviceManager = $this->getServiceManager();
+
+        return $serviceManager->get( $serviceAlias);
+
+    }
+
+}
