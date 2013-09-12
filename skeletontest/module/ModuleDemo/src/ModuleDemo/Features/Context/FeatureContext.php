@@ -69,11 +69,11 @@ class FeatureContext extends BehatContext implements Zf2AwareContextInterface
     }
 
     /**
-     * @Then /^it could be possible call a service using  "([^"]*)" as param$/
+     * @Then /^it could be possible to call a service using  "([^"]*)" as param$/
      */
-    public function itCouldBePossibleCallAServiceUsingAsParam($serviceName)
+    public function itCouldBePossibleToCallAServiceUsingAsParam($serviceName)
     {
-       
+      
         $this->moduleDemoService = $this->zf2MvcApplication->getServiceManager()->get($serviceName);
         assertInstanceof("ModuleDemo\Service\ModuleDemoService",$this->moduleDemoService);
        
