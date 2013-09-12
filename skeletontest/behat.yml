@@ -5,6 +5,7 @@ default:
        module: ModuleDemo
           
 simple:
-  tags: "@simple"
+  filters:
+    tags: "@simple"
   
     
