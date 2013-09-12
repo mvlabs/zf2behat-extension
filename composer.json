@@ -13,14 +13,13 @@
     "require": {
 	"php":">=5.3.3",
 	"behat/behat":"=2.4@stable",
-        "zendframework/zendframework":"2.2.*"
+        "zendframework/zendframework":">=2.2.0"
     },
             
     "require-dev" : {
         "behat/mink": "~1.4.3",
         "behat/mink-extension": "~1.0.1",
-        "phpunit/phpunit": "3.7.*"
-    },
+     },
 
    "autoload": {
 	"psr-0":{
