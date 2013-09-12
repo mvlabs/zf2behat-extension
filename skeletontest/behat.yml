@@ -4,8 +4,7 @@ default:
        config: config/test.application.config.php
        module: ModuleDemo
           
-custom-context:
-  context:
-      class: ModuleDemo\Features\Context\CustomContext
+simple:
+  tags: "@simple"
   
     
