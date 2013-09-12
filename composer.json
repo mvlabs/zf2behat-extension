@@ -18,7 +18,7 @@
             
     "require-dev" : {
         "behat/mink": "~1.4.3",
-        "behat/mink-extension": "~1.0.1",
+        "behat/mink-extension": "~1.0.1"
      },
 
    "autoload": {
