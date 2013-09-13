@@ -194,6 +194,7 @@ Using this path you shuold only remember to add your context class in the autolo
 ===========================
 
 Supported options for profiles are:
+
 1.  module - set the module to be runned for a specific profile (only one module per profile is currently supported)
 2.  config - set a custom configuration file. if it is not specified config/application.config.php will be loaded
 
