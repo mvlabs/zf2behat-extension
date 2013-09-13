@@ -10,7 +10,7 @@ The Extension requires:
 ```
  "php":">=5.3.3",
   "behat/behat":"=2.4@stable",
-  "zendframework/zendframework":"2.2.*"
+  "zendframework/zendframework":">=2.2.0"
 ```
 Installation
 =============
@@ -100,9 +100,5 @@ Configuration
 
  1. module - set the bundle to be runned for a specific profile
  2. config - set a custom configuration file. if it is not specified config/application.config.php will be loaded
-
-
-
-
 
 
