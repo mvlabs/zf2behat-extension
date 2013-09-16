@@ -2,27 +2,31 @@
 
 mvlabs/zf2behat-extension
 ==============
-Behat extension for Zend Framework 2 inspired by Symfony2extension by Konstantin Kudryashov.
+Behat extension for Zend Framework 2 inspired by Symfony2extension by [Konstantin Kudryashov](https://github.com/everzet).
 
 Behat (http://behat.org/) is a php framework for Behavior Driven Development. 
 This extension allows you to use it in your Zend Framework 2 projects.
 It initializes Behat, allowing you to quickly use your Gherking features within ZF2.
 
 
+
 1.Requirements
 =============
-The Extension requires:
+This extension is installed through composer and has following dependencies:
+
 ```
- "php":">=5.3.3",
-  "behat/behat":"=2.4@stable",
-  "zendframework/zendframework":">=2.2.0"
+"php":">=5.3.3",
+"behat/behat":"=2.4@stable",
+"zendframework/zendframework":">=2.2.0"
 ```
+
+Composer will take care of installing these for you (see below).
 
 
 
 2.Installation
 =============
-This extension need composer to be installed. You only need to add the following in your composer.json:
+In order to install this extension, you only need to add the following in your Zend Framework 2 composer.json:
 
 ```
 "require": {
@@ -31,6 +35,7 @@ This extension need composer to be installed. You only need to add the following
 
 ```
 
+and then run composer.phar install (or update).
 At this point, you need to create a file named behat.yml in your application root folder with following content:
 
 ```
