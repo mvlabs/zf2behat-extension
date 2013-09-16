@@ -2,7 +2,7 @@
 
 mvlabs/zf2behat-extension
 ==============
-Behat extension for Zend Framework 2 inspired by Symfony2extension by [a link](https://github.com/everzet "Konstantin Kudryashov").
+Behat extension for Zend Framework 2 inspired by Symfony2extension by [Konstantin Kudryashov](https://github.com/everzet).
 
 Behat (http://behat.org/) is a php framework for Behavior Driven Development. 
 This extension allows you to use it in your Zend Framework 2 projects.
