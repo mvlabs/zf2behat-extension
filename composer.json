@@ -8,22 +8,16 @@
             "email": "mauipipe@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
-    
+        
     "require": {
-	"php":">=5.3.3",
-	"behat/behat":"=2.4@stable",
-        "zendframework/zendframework":">=2.2.0"
+        "php":">=5.3.3",
+        "behat/behat":"v2.4.6",
+	"zendframework/zendframework":">=2.2.0"
     },
-            
-    "require-dev" : {
-        "behat/mink": "~1.4.3",
-        "behat/mink-extension": "~1.0.1"
-     },
-
+     	   
    "autoload": {
-	"psr-0":{
+        "psr-0":{
            "MvLabs\\Zf2Extension":"src/"
-	}
+        }
    }
 }
