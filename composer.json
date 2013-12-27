@@ -2,6 +2,12 @@
     "name": "mvlabs/zf2behat-extension",
     "description": "Zend Framework 2 extension for Behat",
     "license": "MIT",
+    "type": "behat-extension",
+    "keywords" : [
+      "zf2",
+      "behat extension",
+      "MvLabs"
+    ],
     "authors": [
         {
             "name": "David Contavalli",
@@ -12,7 +18,7 @@
     "require": {
         "php":">=5.3.3",
         "behat/behat":"v2.4.6",
-	"zendframework/zendframework":">=2.2.0"
+	"zendframework/zendframework":">=2.1.0"
     },
      	   
    "autoload": {
