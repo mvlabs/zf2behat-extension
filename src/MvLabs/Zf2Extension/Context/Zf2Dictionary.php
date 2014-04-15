@@ -17,17 +17,14 @@ trait Zf2Dictionary
     /**
      * Set Zf2 Zend\Mvc\Application instance
      */
-
-    public function setZf2App( Zend\Mvc\Application $zf2Application )
+    public function setZf2App( \Zend\Mvc\Application $zf2Application )
     {
         $this->zf2Application = $zf2Application;
-
     }
 
     public function getServiceManager()
     {
         return $this->zf2Application->getServiceManager();
-
     }
 
     public function getServiceByAlias( $serviceAlias )
@@ -35,7 +32,5 @@ trait Zf2Dictionary
         $serviceManager = $this->getServiceManager();
 
         return $serviceManager->get( $serviceAlias);
-
     }
-
 }
