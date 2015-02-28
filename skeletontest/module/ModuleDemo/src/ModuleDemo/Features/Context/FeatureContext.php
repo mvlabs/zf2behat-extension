@@ -16,13 +16,13 @@ use Zend\Mvc\Application;
 //
 // Require 3rd-party libraries here:
 //
-   require_once 'PHPUnit/Autoload.php';
-   require_once 'PHPUnit/Framework/Assert/Functions.php';
+//   require_once 'PHPUnit/Autoload.php';
+//   require_once 'PHPUnit/Framework/Assert/Functions.php';
 //
 
 /**
-* Feature context.
-*/
+ * Feature context.
+ */
 class FeatureContext extends BehatContext implements Zf2AwareContextInterface
 {
     private $zf2MvcApplication;
