@@ -17,13 +17,16 @@
         
     "require": {
         "php":">=5.3.3",
-        "behat/behat":"v2.4.6",
+        "behat/behat":">=2.4.6 <3.0.0",
 	"zendframework/zendframework":">=2.1.0"
     },
+    "require-dev": {
+        "phpunit/phpunit":"4.5.*"
+    },
      	   
-   "autoload": {
+    "autoload": {
         "psr-0":{
            "MvLabs\\Zf2Extension":"src/"
         }
-   }
+    }
 }
